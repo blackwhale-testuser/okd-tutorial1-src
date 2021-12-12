@@ -58,16 +58,6 @@ import './App.css';
         <p> { 날짜[4] } </p>
         <hr />
       </div>
-      <div className="list">
-        <h3> { 글제목리스트[5]  } </h3>
-        <p> { 날짜[5] } </p>
-        <hr />
-      </div>
-      <div className="list">
-        <h3> { 글제목리스트[6]  } </h3>
-        <p> { 날짜[6] } </p>
-        <hr />
-      </div> 
     </div>
   );
 }

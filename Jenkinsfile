@@ -7,7 +7,7 @@ retriever: modernSCM(
 )
 
 // OKD의 Buildconifg의 이름과 일치시켜야 한다. 
-appName = "testblog"
+appName = "okd-tutorial"
 
 pipeline {
   agent {

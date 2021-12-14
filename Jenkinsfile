@@ -60,7 +60,7 @@ pipeline {
                 cd okd-deploy
                 sed -i 's/MY_BUILD_TAG/$BUILD_NUMBER/' testblog-deployment.yaml 
                 cat testblog-deployment.yaml 
-                git commit -a -m "demo tag"
+                git commit -a -m "updated the image tag : {$BUILD_NUMBER}"
                 git push
             """)
         }

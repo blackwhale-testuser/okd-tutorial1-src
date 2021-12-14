@@ -19,25 +19,7 @@ pipeline {
     timeout(time: 20, unit: 'MINUTES') 
   }
   stages {
-    stage("Checkout") {
-        steps {
-            checkout scm
-        }
-    }
-    stage('Build') {
-      steps {
-          sh 'npm install'
-          sh 'CI=false npm run build'
-      }
-    }    
-    stage("Docker Build") {
-        steps {
-            // This uploads your application's source code and performs a binary build in OpenShift
-            // This is a step defined in the shared library (see the top for the URL)
-            // (Or you could invoke this step using 'oc' commands!)           
-            binaryBuild(buildConfigName: appName, buildFromPath: ".")
-        }
-    }
+    
     stage("Update Tag") { 
       steps {
         checkout([$class: 'GitSCM',
@@ -55,11 +37,10 @@ pipeline {
                 export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
                 git config --global user.email "test@gmail.com"
                 git checkout master
-                cp --f base/deployment-sample.yaml okd-deploy/temp.yaml
+                cp --f base/deployment-sample.yaml okd-deploy/testblog-deployment.yaml
                 cd okd-deploy
-                sed -i 's/MY_BUILD_TAG/test.66666/' temp.yaml 
-                cat temp.yaml
-                cp --f temp.yaml testblog-deployment.yaml 
+                sed -i 's/MY_BUILD_TAG/test.7777/' testblog-deployment.yaml 
+                cat testblog-deployment.yaml 
                 git commit -a -m "demo tag"
                 git push
             """)

@@ -35,6 +35,7 @@ pipeline {
                 #!/usr/bin/env bash
                 set +x
                 export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
+                echo Build Number = {$BUILD_NUMBER}
                 git config --global user.email "test@gmail.com"
                 git checkout master
                 cp --f base/deployment-sample.yaml okd-deploy/testblog-deployment.yaml

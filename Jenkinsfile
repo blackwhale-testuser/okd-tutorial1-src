@@ -40,7 +40,7 @@ pipeline {
                 git checkout master
                 cp --f base/deployment-sample.yaml okd-deploy/testblog-deployment.yaml
                 cd okd-deploy
-                sed -i 's/MY_BUILD_TAG/{$BUILD_NUMBER}/' testblog-deployment.yaml 
+                sed -i 's/MY_BUILD_TAG/$BUILD_NUMBER/' testblog-deployment.yaml 
                 cat testblog-deployment.yaml 
                 git commit -a -m "demo tag"
                 git push
